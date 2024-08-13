@@ -5,6 +5,7 @@ import About from './components/About';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
 import Protected from './components/Protected';
+import Logout from './components/Logout';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
                 <li className="nav-item">
                   <Link className="nav-link" to="/signin">Signin</Link> 
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/logout">Logout</Link>
+                </li>
               </ul>
             </div>
           </nav>
@@ -37,6 +41,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/signin" element={<Signin />} /> {/* Add the Signin route */}
             <Route path="/protected" element={< Protected/>} /> 
+            <Route path="/logout" element={<Logout />} />
           </Routes>
         </div>
       </header>
