@@ -1,7 +1,9 @@
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken'); // import using cjs
 
 const auth = (req, res, next) => {
-  // const token = req.cookies.token || req.header('Authorization')?.replace('Bearer ', '');
+  console.log("AUTH MIDDLEWARE");
+  console.log("req.cookies:",req.cookies);
+  const token = req.cookies.token || req.header('Authorization')?.replace('Bearer ', '');
   console.log("TOKEN:",token);
   if (!token) {
     return res.status(401).json({ msg: 'No token, authorization denied' });

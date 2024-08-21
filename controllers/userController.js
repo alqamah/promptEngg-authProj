@@ -38,8 +38,7 @@ exports.registerUser = async (req, res) => {
 };
 
 exports.loginUser = async (req, res) => {
-  const { email, password } = req.body;
-
+  const { email, password } = req.body; 
   try {
     const user = await User.findOne({ email });
     if (!user) {
@@ -53,15 +52,15 @@ exports.loginUser = async (req, res) => {
 
     const payload = {
       user: {
-        id: user.id,
+        email: user.email,
       },
     };
-
-    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
-
+    // console.log(payload);
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '24h' });
     // Set the token in a cookie
-    res.cookie('token', token);
-
+    // res.cookie('token', token);
+    res.cookie('email',user.email);
+    //console.log(user.email);
     res.status(200).json({ msg: 'Logged in successfully' });
   } catch (err) {
     console.error(err.message);

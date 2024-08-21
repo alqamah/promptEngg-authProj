@@ -9,6 +9,11 @@ const Signin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const gotoProtected = () => {
+    console.log('Protected resource accessed');
+    window.location.href = '/protected';
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -17,7 +22,7 @@ const Signin = () => {
       toast.success(res.data.msg);
       console.log(res.data);
       // Optional: Redirect to a different page or store authentication state
-      window.location.href = '/protected';
+      // window.location.href = '/protected';
     } catch (error) {
       toast.error(error.response?.data?.msg || 'Server error');
     }
@@ -50,6 +55,7 @@ const Signin = () => {
           />
         </div>
         <button type="submit" className="btn btn-primary">Sign In</button>
+        <button type="button" onClick={gotoProtected} className="btn btn-secondary ms-2">Goto Protected Resource</button>
       </form>
       <ToastContainer />
     </div>

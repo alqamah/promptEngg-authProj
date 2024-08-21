@@ -7,14 +7,29 @@ const Protected = () => {
 
   useEffect(() => {
     const fetchProtectedResource = async () => {
+      // try {
+      //   const token = localStorage.getItem('token')
+      //   const response = await axios.get('/api/users/protected', {
+      //     headers: {
+      //       Authorization: `Bearer ${token}`,
+      //     },
+      //   });
+      //   setResource(response.data)
+      // } catch (err) {
+      //   setError('Failed to fetch protected resource')
+      //   console.error('Error fetching protected resource:', err)
+      // }
       try {
-        const token = localStorage.getItem('token')
+        // const response = await axios.get('/api/users/protected');
+        const token = localStorage.getItem('token');
+        console.log(token);
         const response = await axios.get('/api/users/protected', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setResource(response.data.message)
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            });
+        setResource(response.data);
+        console.log(response.data)
       } catch (err) {
         setError('Failed to fetch protected resource')
         console.error('Error fetching protected resource:', err)
